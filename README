@@ -1,0 +1,5 @@
+To install add to your deps:
+
+[FormModelBundle]
+    git=http://github.com/cordoval/FormModelBundle.git
+    target=/bundles/Cordova/Bundle/FormModelBundle
