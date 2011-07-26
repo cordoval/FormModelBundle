@@ -20,7 +20,7 @@ use Behat\Gherkin\Node\PyStringNode,
 /**
  * Feature context.
  */
-class FeatureContext extends BehatContext //MinkContext if you want to test web
+class FeatureContext extends MinkContext //BehatContext if you want to test web
 {
 //
 // Place your definition and hook methods here:
@@ -38,7 +38,7 @@ class FeatureContext extends BehatContext //MinkContext if you want to test web
     /**
      * @Given /^I have entered (\d+) into the calculator$/
      */
-    public function iHaveEnteredIntoTheCalculator($argument1)
+    public function iHaveEnteredIntoTheCalculator($argument)
     {
         $container = $this->getContainer();
         $calculator = $container->get('cordova_form_model.calculator');
@@ -50,15 +50,19 @@ class FeatureContext extends BehatContext //MinkContext if you want to test web
      */
     public function iPressAdd()
     {
-        throw new PendingException();
+        $container = $this->getContainer();
+        $calculator = $container->get('cordova_form_model.calculator');
+        $calculator->add();
     }
 
     /**
      * @Then /^the result should be (\d+) on the screen$/
      */
-    public function theResultShouldBeOnTheScreen($argument1)
+    public function theResultShouldBeOnTheScreen($argument)
     {
-        throw new PendingException();
+        $container = $this->getContainer();
+        $calculator = $container->get('cordova_form_model.calculator');
+        assertEquals($argument, $calculator->result());
     }
 
 }
