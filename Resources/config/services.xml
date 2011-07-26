@@ -6,11 +6,11 @@
 
     <!--
     <parameters>
-        <parameter key="cordova_form_model.example.class">Cordova\Bundle\FormModelBundle\Example</parameter>
+        <parameter key="cordova_form_model.calculator.class">Cordova\Bundle\FormModelBundle\Calculator\Calculator</parameter>
     </parameters>
 
     <services>
-        <service id="cordova_form_model.example" class="%cordova_form_model.example.class%">
+        <service id="cordova_form_model.calculator" class="%cordova_form_model.calculator.class%">
             <argument type="service" id="service_id" />
             <argument>plain_value</argument>
             <argument>%parameter_name%</argument>
