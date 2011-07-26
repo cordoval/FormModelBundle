@@ -41,7 +41,7 @@ class LsCommandTest extends \PHPUnit_Framework_TestCase
      *
      * this will generate an exception so complete here the tag for that
      */
-    public function shouldThrowExceptionOnNoArgument() {
+    /*public function shouldThrowExceptionOnNoArgument() {
 
         require_once __DIR__.'/../../../../../../../app/AppKernel.php';
         $kernel = new \AppKernel('test', false);
@@ -54,6 +54,6 @@ class LsCommandTest extends \PHPUnit_Framework_TestCase
         //$this->assertRegExp('/.../', $commandTester->getDisplay());
         $commandTester->getDisplay();
         //$this->lsCommand->execute($input, $output);
-    }
+    }*/
 
 }
