@@ -42,7 +42,7 @@ class FeatureContext extends BehatContext //MinkContext if you want to test web
     {
         $container = $this->getContainer();
         $calculator = $container->get('cordova_form_model.calculator');
-        $calculator->doSomethingWith($argument);
+        $calculator->push($argument);
     }
 
     /**
