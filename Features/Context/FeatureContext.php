@@ -98,4 +98,45 @@ class FeatureContext extends MinkContext //BehatContext if you want to test web
         }
     }
 
+    /**
+     * @Given /^I am in the "([^"]*)" page$/
+     */
+    public function iAmInThePage($page)
+    {
+         $this->visit($page);
+    }
+
+    /**
+     * @Given /^the selected video is "([^"]*)"$/
+     */
+    public function theSelectedVideoIs($videoName)
+    {
+         $this->assertPageContainsText($videoName);
+    }
+
+    /**
+     * @When /^I click on "([^"]*)"$/
+     */
+    public function iClickOn($argument1)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then /^"([^"]*)" is added to my total$/
+     */
+    public function isAddedToMyTotal($argument1)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Given /^"([^"]*)" is selected$/
+     */
+    public function isSelected($argument1)
+    {
+        throw new PendingException();
+    }
+
+
 }
