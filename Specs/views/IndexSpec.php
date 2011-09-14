@@ -10,11 +10,10 @@ class DescribeIndex extends View
         $video = \Mockery::mock(
             'Application_Model_Video', array('getName' => 'Revolution OS'));
 
-        $output = $this->render('CordovaFormModelBundle:Default:index.html.twig', array(
+        $this->render('CordovaFormModelBundle:Default:index.html.twig', array(
             'video' => $video,
         ));
-        print_r($output);
-        //die();
-        $output->should->contain('Revolution OS');
+
+        $this->rendered->should->contain('Revolution OS');
     }
 }
