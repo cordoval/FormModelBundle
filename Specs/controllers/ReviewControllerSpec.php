@@ -4,6 +4,11 @@ namespace Cordova\Bundle\FormModelBundle\Specs\controllers;
 
 use \PHPSpec\Context\Symfony2\Controller as DescribeController;
 
+require_once __DIR__ . '/../../../../../../../app/bootstrap.php.cache';
+require_once __DIR__ . '/../../../../../../../app/AppKernel.php';
+use Symfony\Component\HttpKernel\Controller\ControllerResolver;
+use Symfony\Component\HttpFoundation\Request;
+
 class DescribeReviewController extends DescribeController
 {
     function itShouldRouteTheReviewsPageToTheIndexAction()
@@ -14,14 +19,17 @@ class DescribeReviewController extends DescribeController
 
     function itShouldDispatchToTheReviewController()
     {
-        $container = new \Yadif_Container(
-            new \Zend_Config_Xml(APPLICATION_PATH . "/configs/objects.xml")
-        );
+        $kernel = new \AppKernel('dev', true);
+        $kernel->loadClassCache();
+        $kernel->init();
+        $kernel->boot();
+        $ORM = $kernel->getContainer()->get('doctrine');
+        $em = $ORM->getEntityManager();
 
         $mapper = \Mockery::mock('Application_Model_VideoMapper');
         $mapper->shouldReceive('find')->andReturn($container->videoModel)->with('1')->once();
         $container->videoMapper = $mapper;
-        $this->_getZendTest()->bootstrap->getBootstrap()->setContainer($container);
+        $this->_getSymfonyTest()->bootstrap->getBootstrap()->setContainer($container);
 
         $this->post('/review', array('id' => '1'));
     }
