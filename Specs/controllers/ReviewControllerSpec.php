@@ -19,19 +19,15 @@ class DescribeReviewController extends DescribeController
 
     function itShouldDispatchToTheReviewController()
     {
-        $kernel = new \AppKernel('dev', true);
-        $kernel->loadClassCache();
-        $kernel->init();
-        $kernel->boot();
-        $ORM = $kernel->getContainer()->get('doctrine');
-        $em = $ORM->getEntityManager();
+        $client = $this->getClient();
+        $container = $this->getContainer();
 
+        //$ORM = $container->get('doctrine');
+        //$em = $ORM->getEntityManager();
         $em = \Mockery::mock('VideoEntityManager');
-        $em->shouldReceive('find')->andReturn(???$container->videoModel??)->with('1')->once();
-
-        // ??
-        $container->videoManager? = $em;
-        $this->_getSymfonyTest()->bootstrap->getBootstrap()->setContainer($container); ???
+        $em->shouldReceive('find')->andReturn($videoModel)->with('1')->once();
+        $container->set('videoEntityManager', $em);
+        $container->videoManager = $em;
 
         $this->post('/review', array('id' => '1'));
     }
