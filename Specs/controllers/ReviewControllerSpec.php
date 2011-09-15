@@ -26,10 +26,12 @@ class DescribeReviewController extends DescribeController
         $ORM = $kernel->getContainer()->get('doctrine');
         $em = $ORM->getEntityManager();
 
-        $mapper = \Mockery::mock('Application_Model_VideoMapper');
-        $mapper->shouldReceive('find')->andReturn($container->videoModel)->with('1')->once();
-        $container->videoMapper = $mapper;
-        $this->_getSymfonyTest()->bootstrap->getBootstrap()->setContainer($container);
+        $em = \Mockery::mock('VideoEntityManager');
+        $em->shouldReceive('find')->andReturn(???$container->videoModel??)->with('1')->once();
+
+        // ??
+        $container->videoManager? = $em;
+        $this->_getSymfonyTest()->bootstrap->getBootstrap()->setContainer($container); ???
 
         $this->post('/review', array('id' => '1'));
     }
