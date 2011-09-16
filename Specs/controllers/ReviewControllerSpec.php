@@ -20,9 +20,12 @@ class DescribeReviewController extends DescribeController
     function itShouldDispatchToTheReviewController()
     {
         $container = $this->getContainer();
+        var_export($container);
+        die();
+
         $em = \Mockery::mock('VideoEntityManager');
 
-        $em->shouldReceive('find')->andReturn($videoModel)->with('1')->once();
+        $em->shouldReceive('find')->andReturn($em)->with('1')->once();
 
         $container->set('videoEntityManager', $em);
 
