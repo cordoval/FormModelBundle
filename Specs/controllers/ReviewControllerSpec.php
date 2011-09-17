@@ -20,8 +20,8 @@ class DescribeReviewController extends DescribeController
     function itShouldDispatchToTheReviewController()
     {
         $container = $this->getContainer();
-        var_export($container);
-        die();
+        //var_export($container);
+        //die();
 
         $em = \Mockery::mock('VideoEntityManager');
 
